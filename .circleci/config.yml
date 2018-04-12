@@ -6,8 +6,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install Ruby dependencies
           command: bundle install
+      - run:
+          name: Install Node.js dependencies
+          command: npm install
+      - run:
+          name: Copy USWDS files and assets
+          command: npm run update-uswds
       - run:
           name: Build
           command: JEKYLL_ENV=production bundle exec jekyll build
