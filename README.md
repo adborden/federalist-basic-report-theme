@@ -1,13 +1,19 @@
 # federalist-basic-report-theme
 
-Welcome to your new Jekyll theme! In this directory, you'll find the files you need to be able to package up your theme into a gem. Put your layouts in `_layouts`, your includes in `_includes`, your sass files in `_sass` and any other assets in `assets`.
+This repo contains the Jekyll theme for the Basic Report [Federalist] template.
 
-To experiment with this code, add some sample content and run `bundle exec jekyll serve` – this directory is setup just like a Jekyll site!
-
-TODO: Delete this and the text above, and describe your gem
+The Basic Report template is a simple, easy to use setup designed to host
+multiple pages about a recent report or order. This setup provides a clean space
+for complex details or instructions. Navigation can be customized to host many
+pages while maintaining a clear hierarchy.
 
 
 ## Installation
+
+STOP! You probably want to create your site from
+[Federalist](https://federalist.18f.gov/sites/new) and choose the "Basic Report"
+template from there. If you already have a Jekyll site and want to move to the
+Basic Report theme, read on!
 
 Add this line to your Jekyll site's `Gemfile`:
 
@@ -50,3 +56,5 @@ To add a custom directory to your theme-gem, please edit the regexp in `federali
 
 The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
+
+[Federalist]: https://federalist.18f.gov/
