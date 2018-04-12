@@ -1,6 +1,9 @@
-*.gem
+/assets/uswds/
 .bundle
-.sass-cache
-_site
+*.gem
+/_data
 Gemfile.lock
 node_modules
+.sass-cache
+/_sass/uswds/
+_site
