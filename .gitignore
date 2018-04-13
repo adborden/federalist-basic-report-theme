@@ -4,3 +4,4 @@ _site/
 .DS_Store
 /assets/uswds/
 /_sass/uswds/
+node_modules
