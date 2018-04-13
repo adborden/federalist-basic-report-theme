@@ -1,3 +1,4 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem 'uswds-jekyll', :git => 'https://github.com/18F/uswds-jekyll.git'
+source "https://rubygems.org"
+gemspec
