@@ -49,6 +49,19 @@ When your theme is released, only the files in `_layouts`, `_includes`, `_sass` 
 To add a custom directory to your theme-gem, please edit the regexp in `federalist-basic-report-theme.gemspec` accordingly.
 
 
+## Stylesheets
+
+
+#### federalist.scss
+
+This contains the USWDS Sass as well as additional styles for the common Federalist UI components.
+
+
+#### theme.scss
+
+This contains styles specific to this Federalist theme.
+
+
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for additional information.

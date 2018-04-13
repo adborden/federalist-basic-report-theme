@@ -26,5 +26,6 @@ google_analytics_ua: UA-48605964-32
 
 # search_site_handle: searchgov-site-handle
 
-styles:
-  - /assets/css/site.css
+# Include your own css overrides by adding files in /assets/css/site.css
+# styles:
+#   - /assets/css/site.css
