@@ -4,11 +4,9 @@ main:
   class: usa-grid usa-section usa-content usa-layout-docs
 ---
 {% assign sidenav = page.sidenav | default: site.sidenav %}
-{% if sidenav %}
 <aside class="usa-layout-docs-sidenav sidenav">
   {% include sidenav.html links=sidenav %}
 </aside>
-{% endif %}
 
 <div class="usa-layout-docs-main_content">
   {{ content }}

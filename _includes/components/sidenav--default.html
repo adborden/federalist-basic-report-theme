@@ -1,0 +1,26 @@
+<ul class="usa-sidenav-list">
+  {% for p in site.pages %}
+    {% unless p.title %}
+      {% comment%}
+        Only show pages that have a title.
+      {% endcomment %}
+      {% continue %}
+    {% endunless %}
+    {% assign _current = false %}
+    {% if p.url == page.url %}
+      {% assign _current = true %}
+    {% endif %}
+    <li>
+      <a href="{{ p.url | relative_url }}"
+        {% if _current %} class="usa-current" {% endif %}
+      >
+         {{ p.title }}
+      </a>
+      {% if _current and page.subnav %}
+      <ul class="usa-sidenav-sub_list">
+        {% include subnav.html links=page.subnav %}
+      </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

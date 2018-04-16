@@ -1,3 +1,5 @@
+{% if include.links %}
+
 <ul class="usa-sidenav-list">
   {% for link in include.links %}
     {% assign _href = link.href %}
@@ -19,3 +21,7 @@
   </li>
   {% endfor %}
 </ul>
+
+{% else %}
+  {% include components/sidenav--default.html %}
+{% endif %}
