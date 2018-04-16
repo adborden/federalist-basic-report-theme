@@ -24,6 +24,14 @@ sidenav:
   - text: Theme
     href: /theme/
 
+footer_nav:
+  - text: Documentation
+    href: /
+  - text: Demo link one
+    href: /
+  - text: Demo link two
+    href: /
+
 # Configuration for DAP, add your agency ID here:
 # dap_agency: GSA
 

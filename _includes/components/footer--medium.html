@@ -1,4 +1,3 @@
-{% if footer %}
 <footer class="usa-footer usa-footer-medium" role="contentinfo">
 
   {% if footer.last_updated %}
@@ -17,11 +16,11 @@
 
 
 
-  {% if footer.links %}
-    {% assign footer_links = site.data.navigation[footer.links] | default: footer.links %}
-    {% assign _sizes = 'whole half third fourth sixth' | split: ' ' %}
-    {% assign _size = footer_links.size | minus: 1 %}
-    {% assign _size = _sizes[_size] | default: 'whole' %}
+  {% if site.footer_nav %}
+  {% assign footer_links = site.footer_nav %}
+  {% assign _sizes = 'whole half third fourth sixth' | split: ' ' %}
+  {% assign _size = footer_links.size | minus: 1 %}
+  {% assign _size = _sizes[_size] | default: 'whole' %}
   <div class="usa-footer-primary-section">
     <div class="usa-grid">
       <nav class="usa-footer-nav">
@@ -97,4 +96,3 @@
   {% endif %}
 
 </footer>
-{% endif %}
