@@ -72,7 +72,7 @@
           {% assign _link = site.report_button %}
           <li>
             <a
-              href="{% if _link.external %}{{ _link.href }}{% else %}{{ _link.href | relative_url }}{% endif %}"
+              href="{% if _link.external %}{{ _link.href }}{% else %}{{ _link.href | default: '/assets/docs/sample-document.pdf' | relative_url }}{% endif %}"
               class="{{ 'usa-button ' | append: _link.class }}"
               role="button"
             >
