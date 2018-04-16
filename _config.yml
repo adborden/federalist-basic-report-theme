@@ -8,14 +8,14 @@ title: Federalist Basic Report
 # GitHub information
 # This is used for adding an edit this page link to the footer
 github:
-  organization: 18F
-  repository: federalist-uswds-template
-  default_branch: report-config
+  organization: adborden
+  repository: federalist-basic-report-template
+  default_branch: master
 
 # Configuration for Google Analytics, add your UA code here:
 google_analytics_ua: UA-48605964-32
 
-report_button:
+download_report_button:
   text: Download as PDF
   href: /assets/docs/sample-document.pdf
 
@@ -49,7 +49,7 @@ footer_nav:
 
 # Configuration for footer contact links
 contact:
-  agency_name: Name of agency
+  agency_name: Name of agency # The name of your agency or organization
   agency_logo: /assets/uswds/img/logo-img.png
   #agency_logo_alt: Describe your logo here.
 
@@ -68,6 +68,8 @@ contact:
       href: https://youtube.com
       external: true
       type: youtube
+
+  # The header to display above your contact information. This could be the name of your office or component.
   heading: Agency contact center
   # Configuration for contact links for email, phone, etc...
   contact_links:

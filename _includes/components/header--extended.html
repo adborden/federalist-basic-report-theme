@@ -69,7 +69,7 @@
             <button class="usa-header-search-button js-search-button">Search</button>
           </li>
           {% endif %}
-          {% assign _link = site.report_button %}
+          {% assign _link = site.download_report_button %}
           <li>
             <a
               href="{% if _link.external %}{{ _link.href }}{% else %}{{ _link.href | default: '/assets/docs/sample-document.pdf' | relative_url }}{% endif %}"
