@@ -1,7 +1,7 @@
 ---
+title: Styleguide
 layout: page
 permalink: /theme/
-sidenav: primary
 ---
 
 <!---

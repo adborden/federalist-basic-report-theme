@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Aaron D Borden"]
   spec.email         = ["adborden@a14n.net"]
 
-  spec.summary       = "Jekyll theme for the Federalist Basic Report website template."
+  spec.summary       = "Jekyll theme for the Federalist Basic Report site template."
   spec.homepage      = "https://federalist.18f.gov/"
   spec.license       = "CC0-1.0"
 

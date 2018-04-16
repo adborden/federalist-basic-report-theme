@@ -1,31 +1,95 @@
-title: This is the site title
+# Change these values to suite your site and organization
+# Content following a "#" are "comments" and will be ignored by Federalist.
+# Indentation is important, please use spaces for indentation.
+# Blank lines are ignored by Federalist but help to separate logical sections apart.
 
-site_width: wide
+title: Federalist Basic Report
 
 # GitHub information
 # This is used for adding an edit this page link to the footer
 github:
-  organization: 18F
-  repository: federalist-uswds-template
-  default_branch: report-config
+  organization: adborden
+  repository: federalist-basic-report-template
+  default_branch: master
 
 # Configuration for Google Analytics, add your UA code here:
 google_analytics_ua: UA-48605964-32
 
+download_report_button:
+  text: Download as PDF
+  href: /assets/docs/sample-document.pdf
+
+sidenav:
+  - text: Home
+    href: /
+  - text: Intro
+    href: /intro/
+  - text: Theme
+    href: /theme/
+
+footer_nav:
+  - text: Documentation
+    href: /
+  - text: Demo link one
+    href: /
+  - text: Demo link two
+    href: /
+
+# Show a "Return to top" link in the footer.
+# Uncomment and set this to "no" in order to hide the return to top link.
+#show_return_to_top: yes
+
+# Configuration for "Edit this page" link in the footer.
+# Set this to "no" in order to hide the link.
+#show_suggest_an_edit: yes
+
+# Configuration for "Last updated at" date and time.
+# Set this to "yes" in order to show the link.
+#show_last_updated_at: no
+
+# Configuration for footer contact links
+contact:
+  agency_name: Name of agency # The name of your agency or organization
+  agency_logo: /assets/uswds/img/logo-img.png
+  #agency_logo_alt: Describe your logo here.
+
+  # Configuration for social media links
+  # Comment out links you don't want to use (RSS is an example)
+  social_links:
+    - text: Facebook
+      href: https://facebook.com
+      external: true
+      type: facebook
+    - text: Twitter
+      href: https://twitter.com
+      external: true
+      type: twitter
+    - text: YouTube
+      href: https://youtube.com
+      external: true
+      type: youtube
+
+  # The header to display above your contact information. This could be the name of your office or component.
+  heading: Agency contact center
+  # Configuration for contact links for email, phone, etc...
+  contact_links:
+    - text: (800) CALL-GOVT
+      href: tel:1-800-555-5555
+    - text: info@agency.gov
+      href: mailto:info@agency.gov
 # Configuration for DAP, add your agency ID here:
-# dap_agency: GSA
+#dap_agency: GSA
 
 # Uncomment to enable AnchorJS functionality on docs layout.
 # See https://github.com/bryanbraun/anchorjs for more information.
-# anchor_js_targets: [h1, h2, h3, h4, h5, h6]
+#anchor_js_targets: [h1, h2, h3, h4, h5, h6]
 
 # To enable search, uncomment the search section
 # You will need to setup a search account with search.gov
 # https://search.usa.gov/signup
 # Your search_site_handle value is from the search.gov settings page.
-
-# search_site_handle: searchgov-site-handle
+#search_site_handle: searchgov-site-handle
 
 # Include your own css overrides by adding files in /assets/css/site.css
-# styles:
-#   - /assets/css/site.css
+#styles:
+#  - /assets/css/site.css

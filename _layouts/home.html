@@ -1,9 +1,22 @@
 ---
-layout: default
+layout: page
 ---
 
 {% assign hero = page.hero %}
 {% include components/hero.html %}
+
+<section class="usa-grid usa-section">
+  <h1>Welcome to your Federalist site!</h1>
+  <p>
+    This is the Basic Report template that features a single report.
+  </p>
+  <p>
+    Place your site content under the `pages/` directory.
+  </p>
+  <p>
+    Look at the <a href="https://github.com/adborden/federalist-basic-report-theme">theme documentation</a> for more information on how to configure your site.
+  </p>
+</section>
 
 {% if page.tagline and page.intro %}
 <section class="usa-grid usa-section">

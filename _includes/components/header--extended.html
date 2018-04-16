@@ -1,4 +1,3 @@
-{% if header %}
 <header class="usa-header usa-header-extended" role="banner">
 
   <div class="usa-navbar">
@@ -48,8 +47,6 @@
       </ul>
       {% endif %}
 
-      {% assign _secondary = header.secondary %}
-      {% if _secondary %}
       <div class="usa-nav-secondary">
         {% if site.search_site_handle  %}
           <form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form" method="get" class="usa-search usa-search-small js-search-form usa-sr-only">
@@ -72,21 +69,20 @@
             <button class="usa-header-search-button js-search-button">Search</button>
           </li>
           {% endif %}
-          {% assign secondary_links = site.data.navigation[_secondary.links] | default: _secondary.links %}
-          {% for _link in secondary_links %}
-            <li>
-              <a href="{% if _link.external %}{{ _link.href }}{% else %}{{ _link.href | relative_url }}{% endif %}"
-              {% if _link.class %} class="{{ _link.class }}" {% endif %}>
-                {{ _link.text }}
-              </a>
-            </li>
-          {% endfor %}
+          {% assign _link = site.download_report_button %}
+          <li>
+            <a
+              href="{% if _link.external %}{{ _link.href }}{% else %}{{ _link.href | default: '/assets/docs/sample-document.pdf' | relative_url }}{% endif %}"
+              class="{{ 'usa-button ' | append: _link.class }}"
+              role="button"
+            >
+              {{ _link.text | default: 'Download report' }}
+            </a>
+          </li>
         </ul>
       </div>
-      {% endif %}
 
     </div>
   </nav>
 </header>
 <div class="usa-overlay"></div>
-{% endif %}

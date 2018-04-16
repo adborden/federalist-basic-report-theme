@@ -20,10 +20,10 @@ $image-path: '../uswds/img';
 {% if site.data.theme.colors.usa-banner.usa-banner-link-hover %}$usa-banner-link-hover: {{ site.data.theme.colors.usa-banner.usa-banner-link-hover }};{% endif %}
 
 // Header colors
-{% if site.data.theme.colors.header.header-bg %}$header-bg: {{ site.data.theme.colors.header.header-bg }};{% endif %}
-{% if site.data.theme.colors.header.header-title %}$header-title: {{ site.data.theme.colors.header.header-title }};{% endif %}
-{% if site.data.theme.colors.header.header-link %}$header-link: {{ site.data.theme.colors.header.header-link }};{% endif %}
-{% if site.data.theme.colors.header.header-link-hover %}$header-link-hover: {{ site.data.theme.colors.header.header-link-hover }};{% endif %}
+$header-bg: #003965 !default;
+$header-title: white !default;
+$header-link: white !default;
+$header-link-hover: white !default;
 
 // Color - Primary
 {% if site.data.theme.colors.primary %}$color-primary: {{ site.data.theme.colors.primary }};{% endif %}
@@ -88,6 +88,4 @@ $image-path: '../uswds/img';
 {% endfor %}
 
 // Setting site width
-{% if site.site_width %}
-  @import 'components/site-width';
-{% endif %}
+@import 'components/site-width';

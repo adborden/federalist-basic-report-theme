@@ -1,9 +1,8 @@
 ---
-title: Documentation
+title: Introduction
 permalink: /intro/
 
 layout: page
-sidenav: primary
 ---
 
 

@@ -39,6 +39,103 @@ Or install it yourself as:
 
 TODO: Write usage instructions here. Describe your available layouts, includes, sass and/or assets.
 
+### Site-wide Configuration
+
+These are site-wide settings that can be configured in `_config.yml`.
+
+
+#### `download_report_button` (object)
+
+Configure the primary call to action in the header. The `text` is what the
+button should display, the `href` is the path to your downloadable report PDF. The PDF
+should be uploaded to the `assets/` directory.
+
+```
+# _config.yml
+
+download_report_button:
+  text: Download as PDF
+  href: /assets/docs/sample-document.pdf
+```
+
+### Page configuration
+
+These settings can be added to the front-matter of your content pages.
+
+
+#### `title` (string)
+
+The title of your page.
+
+
+#### `permalink` (string)
+
+The URL path your page should appear as. e.g. `/my-page/`.
+
+
+#### `subnav` (array)
+
+The sidenav can display a subnav to jump to headings on the current page. It follows the
+same syntax as `site.sidenav`.
+
+```
+subnav:
+  - text: I. Ipsum
+    href: '#i-ipsum'
+  - text: II. Morem Ipsum
+    href: '#ii-morem-ipsum'
+  - text: III. Even Morem Ipsum
+    href: '#iii-even-morem-ipsum'
+```
+
+
+### Layouts
+
+#### `page`
+
+This is the main layout that most pages should use. It contains a sidenav that
+can be configured in `_config.yml`.
+
+
+#### `default`
+
+The base layout with a header and footer. Additional layouts should inherit from
+this one.
+
+
+### Includes
+
+#### `header.html`
+
+#### `
+
+### Stylesheets
+
+
+##### federalist.scss
+
+This contains the USWDS Sass as well as additional styles for the common Federalist UI components.
+
+
+##### theme.scss
+
+This contains styles specific to this Federalist theme.
+
+
+### Assets
+
+Add your downloadable PDF report under the `assets/` directory. Then add
+configuration for how you want the download report button.
+
+```
+# _config.yml
+
+download_report_button:
+  text: Download as PDF
+  href: /assets/docs/sample-document.pdf
+```
+
+
 ## Development
 
 To set up your environment to develop this theme, run `bundle install`.
@@ -47,19 +144,6 @@ Your theme is setup just like a normal Jekyll site! To test your theme, run `bun
 
 When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
 To add a custom directory to your theme-gem, please edit the regexp in `federalist-basic-report-theme.gemspec` accordingly.
-
-
-## Stylesheets
-
-
-#### federalist.scss
-
-This contains the USWDS Sass as well as additional styles for the common Federalist UI components.
-
-
-#### theme.scss
-
-This contains styles specific to this Federalist theme.
 
 
 ## Contributing
