@@ -1,4 +1,7 @@
 # Change these values to suite your site and organization
+# Content following a "#" are "comments" and will be ignored by Federalist.
+# Indentation is important, please use spaces for indentation.
+# Blank lines are ignored by Federalist but help to separate logical sections apart.
 
 title: Federalist Basic Report
 
@@ -32,20 +35,59 @@ footer_nav:
   - text: Demo link two
     href: /
 
+# Show a "Return to top" link in the footer.
+# Uncomment and set this to "no" in order to hide the return to top link.
+#show_return_to_top: yes
+
+# Configuration for "Edit this page" link in the footer.
+# Set this to "no" in order to hide the link.
+#show_suggest_an_edit: yes
+
+# Configuration for "Last updated at" date and time.
+# Set this to "yes" in order to show the link.
+#show_last_updated_at: no
+
+# Configuration for footer contact links
+contact:
+  agency_name: Name of agency
+  agency_logo: /assets/uswds/img/logo-img.png
+  #agency_logo_alt: Describe your logo here.
+
+  # Configuration for social media links
+  # Comment out links you don't want to use (RSS is an example)
+  social_links:
+    - text: Facebook
+      href: https://facebook.com
+      external: true
+      type: facebook
+    - text: Twitter
+      href: https://twitter.com
+      external: true
+      type: twitter
+    - text: YouTube
+      href: https://youtube.com
+      external: true
+      type: youtube
+  heading: Agency contact center
+  # Configuration for contact links for email, phone, etc...
+  contact_links:
+    - text: (800) CALL-GOVT
+      href: tel:1-800-555-5555
+    - text: info@agency.gov
+      href: mailto:info@agency.gov
 # Configuration for DAP, add your agency ID here:
-# dap_agency: GSA
+#dap_agency: GSA
 
 # Uncomment to enable AnchorJS functionality on docs layout.
 # See https://github.com/bryanbraun/anchorjs for more information.
-# anchor_js_targets: [h1, h2, h3, h4, h5, h6]
+#anchor_js_targets: [h1, h2, h3, h4, h5, h6]
 
 # To enable search, uncomment the search section
 # You will need to setup a search account with search.gov
 # https://search.usa.gov/signup
 # Your search_site_handle value is from the search.gov settings page.
-
-# search_site_handle: searchgov-site-handle
+#search_site_handle: searchgov-site-handle
 
 # Include your own css overrides by adding files in /assets/css/site.css
-# styles:
-#   - /assets/css/site.css
+#styles:
+#  - /assets/css/site.css
