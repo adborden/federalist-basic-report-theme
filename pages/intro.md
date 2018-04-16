@@ -3,7 +3,6 @@ title: Documentation
 permalink: /intro/
 
 layout: page
-sidenav: primary
 ---
 
 

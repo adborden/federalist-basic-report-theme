@@ -3,7 +3,6 @@ title: Documentation
 permalink: /
 
 layout: page
-sidenav: primary
 subnav:
   - text: I. Ipsum
     href: '#i-ipsum'

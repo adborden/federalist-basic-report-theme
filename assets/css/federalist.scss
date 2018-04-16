@@ -88,6 +88,4 @@ $header-link-hover: white !default;
 {% endfor %}
 
 // Setting site width
-{% if site.site_width %}
-  @import 'components/site-width';
-{% endif %}
+@import 'components/site-width';
