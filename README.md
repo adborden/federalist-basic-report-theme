@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/adborden/federalist-basic-report-theme.svg?style=svg)](https://circleci.com/gh/adborden/federalist-basic-report-theme)
+
 # Federalist Basic Report Theme
 
 This repo contains the Jekyll theme for the Basic Report [Federalist] template.
