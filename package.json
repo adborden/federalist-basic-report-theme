@@ -6,7 +6,7 @@
     "clean": "rm -rf assets/uswds _sass/uswds",
     "gem:build": "bundle exec rake build",
     "gem:install": "bundle exec rake install",
-    "gem:relase": "bundle exec rake release",
+    "gem:release": "bundle exec rake release",
     "postinstall": "bundle",
     "start": "bundle exec jekyll serve",
     "update-uswds": "npm run update-assets && npm run update-sass",
