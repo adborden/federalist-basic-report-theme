@@ -7,7 +7,7 @@ references:
 
 version: 2
 jobs:
-  dependencies:
+  build:
     docker:
       - image: circleci/ruby:2.3-node
     steps:
@@ -30,19 +30,6 @@ jobs:
           key: *npm-cache-key
           paths:
             - node_modules
-      - persist_to_workspace:
-          root: .
-          paths:
-            - vendor/bundle
-            - node_modules
-
-  build:
-    docker:
-      - image: circleci/ruby:2.3-node
-    steps:
-      - checkout
-      - attach_workspace:
-         at: .
       - run:
           name: Install Ruby dependencies
           command: bundle install --path vendor/bundle
@@ -61,8 +48,24 @@ jobs:
       - image: circleci/ruby:2.3-node
     steps:
       - checkout
-      - attach_workspace:
-         at: .
+      - restore_cache:
+          key: *bundle-cache-key
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle-cache-key
+          paths:
+            - vendor/bundle
+      - restore_cache:
+          key: *npm-cache-key
+      - run:
+          name: Install Node.js dependencies
+          command: npm install
+      - save_cache:
+          key: *npm-cache-key
+          paths:
+            - node_modules
       - run:
           name: Install Ruby dependencies
           command: bundle install --path vendor/bundle
@@ -84,6 +87,15 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
+      - restore_cache:
+          key: *bundle-cache-key
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle-cache-key
+          paths:
+            - vendor/bundle
       - run:
           name: Install the theme
           command: gem install pkg/federalist-basic-report-theme-*.gem
@@ -107,13 +119,8 @@ workflows:
   version: 2
   build-and-test-gem:
     jobs:
-      - dependencies
-      - build:
-          requires:
-            - dependencies
-      - build-gem:
-          requires:
-            - dependencies
+      - build
+      - build-gem
       - test-gem:
           requires:
             - build-gem
