@@ -84,35 +84,29 @@ jobs:
     docker:
       - image: circleci/ruby:2.3
     steps:
-      - checkout
       - attach_workspace:
           at: .
-      - restore_cache:
-          key: *bundle-cache-key
       - run:
-          name: Install Ruby dependencies
-          command: bundle install --path vendor/bundle
-      - save_cache:
-          key: *bundle-cache-key
-          paths:
-            - vendor/bundle
+          name: Install the dependencies
+          command: gem install jekyll html-proofer
       - run:
           name: Install the theme
           command: gem install pkg/federalist-basic-report-theme-*.gem
+      # Avoid using bundler here
       - run:
           name: Create new Jekyll site
-          command: bundle exec jekyll new jekyll-new-site
+          command: jekyll new jekyll-new-site
       - run:
           name: Configure the theme
           command: "echo 'theme: federalist-basic-report-theme' >> _config.yml"
           working_dir: jekyll-new-site
       - run:
           name: Jekyll build
-          command: bundle exec jekyll build
+          command: jekyll build
           working_dir: jekyll-new-site
       - run:
           name: Test the site
-          command: bundle exec htmlproofer --check-html --disable-external jekyll-new-site/_site
+          command: htmlproofer --check-html --disable-external jekyll-new-site/_site
 
 
 workflows:
