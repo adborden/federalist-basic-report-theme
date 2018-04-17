@@ -73,6 +73,8 @@ workflows:
   version: 2
   build-and-test-gem:
     jobs:
+      - build
+      - build-gem
       - test-gem:
           requires:
             - build-gem
