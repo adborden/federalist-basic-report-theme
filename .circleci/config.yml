@@ -79,20 +79,22 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Create new Jekyll site
-          command: bundle exec jekyll new
-      - run:
           name: Install the theme
           command: gem install pkg/federalist-basic-report-theme-*.gem
       - run:
+          name: Create new Jekyll site
+          command: bundle exec jekyll new jekyll-new-site
+      - run:
           name: Configure the theme
           command: "echo 'theme: federalist-basic-report-theme' >> _config.yml"
+          working_dir: jekyll-new-site
       - run:
           name: Jekyll build
           command: bundle exec jekyll build
+          working_dir: jekyll-new-site
       - run:
           name: Test the site
-          command: bundle exec htmlproofer --check-html --disable-external _site
+          command: bundle exec htmlproofer --check-html --disable-external jekyll-new-site/_site
 
 
 workflows:
