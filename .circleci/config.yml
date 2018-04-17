@@ -107,7 +107,7 @@ workflows:
             - dependencies
       - build-gem:
           requires:
-            - dependenceis
+            - dependencies
       - test-gem:
           requires:
             - build-gem
