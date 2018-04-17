@@ -1,13 +1,13 @@
 references:
   bundle-cache-key: &bundle-cache-key
-    v1-bundle-{{ checksum 'Gemfile.lock' }}
+    v1-bundle-{{ checksum "Gemfile.lock" }}
   npm-cache-key: &npm-cache-key
-    v1-npm-{{ checksum 'package-lock.json' }}
+    v1-npm-{{ checksum "package-lock.json" }}
 
 
 version: 2
 jobs:
-  dependencies:
+  build:
     docker:
       - image: circleci/ruby:2.3-node
     steps:
@@ -30,19 +30,9 @@ jobs:
           key: *npm-cache-key
           paths:
             - node_modules
-      - persist_to_workspace:
-          root: .
-          paths:
-            - vendor/bundle
-            - node_modules
-
-  build:
-    docker:
-      - image: circleci/ruby:2.3-node
-    steps:
-      - checkout
-      - attach_workspace:
-         at: .
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
       - run:
           name: Copy USWDS files and assets
           command: npm run update-uswds
@@ -58,8 +48,27 @@ jobs:
       - image: circleci/ruby:2.3-node
     steps:
       - checkout
-      - attach_workspace:
-         at: .
+      - restore_cache:
+          key: *bundle-cache-key
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle-cache-key
+          paths:
+            - vendor/bundle
+      - restore_cache:
+          key: *npm-cache-key
+      - run:
+          name: Install Node.js dependencies
+          command: npm install
+      - save_cache:
+          key: *npm-cache-key
+          paths:
+            - node_modules
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
       - run:
           name: Copy USWDS files and assets
           command: npm run update-uswds
@@ -78,34 +87,40 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
+      - restore_cache:
+          key: *bundle-cache-key
       - run:
-          name: Create new Jekyll site
-          command: bundle exec jekyll new
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle-cache-key
+          paths:
+            - vendor/bundle
       - run:
           name: Install the theme
           command: gem install pkg/federalist-basic-report-theme-*.gem
       - run:
+          name: Create new Jekyll site
+          command: bundle exec jekyll new jekyll-new-site
+      - run:
           name: Configure the theme
           command: "echo 'theme: federalist-basic-report-theme' >> _config.yml"
+          working_dir: jekyll-new-site
       - run:
           name: Jekyll build
           command: bundle exec jekyll build
+          working_dir: jekyll-new-site
       - run:
           name: Test the site
-          command: bundle exec htmlproofer --check-html --disable-external _site
+          command: bundle exec htmlproofer --check-html --disable-external jekyll-new-site/_site
 
 
 workflows:
   version: 2
   build-and-test-gem:
     jobs:
-      - dependencies
-      - build:
-          requires:
-            - dependencies
-      - build-gem:
-          requires:
-            - dependenceis
+      - build
+      - build-gem
       - test-gem:
           requires:
             - build-gem
