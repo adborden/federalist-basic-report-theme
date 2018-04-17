@@ -20,3 +20,59 @@ jobs:
       - run:
           name: Test
           command: htmlproofer --check-favicon --check-html --disable-external _site
+
+  build-gem:
+    docker:
+      - image: circleci/ruby:2.3-node
+    steps:
+      - checkout
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install
+      - run:
+          name: Install Node.js dependencies
+          command: npm install
+      - run:
+          name: Copy USWDS files and assets
+          command: npm run update-uswds
+      - run:
+          name: Build gem
+          command: npm run gem:build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - federalist-basic-report-theme-*.gem
+
+  test-gem:
+    docker:
+      - image: circleci/ruby:2.3
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Install jekyll and htmlproofer
+          command: gem install jekyll html-proofer
+      - run:
+          name: Create new Jekyll site
+          command: jekyll new
+      - run:
+          name: Install the theme
+          command: gem install federalist-basic-report-theme-*.gem
+      - run:
+          name: Configure the theme
+          command: "echo 'theme: federalist-basic-report-theme' >> _config.yml"
+      - run:
+          name: Jekyll build
+          command: jekyll build
+      - run:
+          name: Test the site
+          command: htmlproofer --check-html --disable-external _site
+
+
+workflows:
+  version: 2
+  build-and-test-gem:
+    jobs:
+      - test-gem:
+          requires:
+            - build-gem
