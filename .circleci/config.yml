@@ -1,16 +1,48 @@
+references:
+  bundle-cache-key: &bundle-cache-key
+    v1-bundle-{{ checksum 'Gemfile.lock' }}
+  npm-cache-key: &npm-cache-key
+    v1-npm-{{ checksum 'package-lock.json' }}
+
+
 version: 2
 jobs:
+  dependencies:
+    docker:
+      - image: circleci/ruby:2.3-node
+    steps:
+      - checkout
+      - restore_cache:
+          key: *bundle-cache-key
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle-cache-key
+          paths:
+            - vendor/bundle
+      - restore_cache:
+          key: *npm-cache-key
+      - run:
+          name: Install Node.js dependencies
+          command: npm install
+      - save_cache:
+          key: *npm-cache-key
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - vendor/bundle
+            - node_modules
+
   build:
     docker:
       - image: circleci/ruby:2.3-node
     steps:
       - checkout
-      - run:
-          name: Install Ruby dependencies
-          command: bundle install
-      - run:
-          name: Install Node.js dependencies
-          command: npm install
+      - attach_workspace:
+         at: .
       - run:
           name: Copy USWDS files and assets
           command: npm run update-uswds
@@ -26,12 +58,8 @@ jobs:
       - image: circleci/ruby:2.3-node
     steps:
       - checkout
-      - run:
-          name: Install Ruby dependencies
-          command: bundle install
-      - run:
-          name: Install Node.js dependencies
-          command: npm install
+      - attach_workspace:
+         at: .
       - run:
           name: Copy USWDS files and assets
           command: npm run update-uswds
@@ -47,14 +75,12 @@ jobs:
     docker:
       - image: circleci/ruby:2.3
     steps:
+      - checkout
       - attach_workspace:
           at: .
       - run:
-          name: Install jekyll and htmlproofer
-          command: gem install jekyll html-proofer
-      - run:
           name: Create new Jekyll site
-          command: jekyll new
+          command: bundle exec jekyll new
       - run:
           name: Install the theme
           command: gem install pkg/federalist-basic-report-theme-*.gem
@@ -63,18 +89,23 @@ jobs:
           command: "echo 'theme: federalist-basic-report-theme' >> _config.yml"
       - run:
           name: Jekyll build
-          command: jekyll build
+          command: bundle exec jekyll build
       - run:
           name: Test the site
-          command: htmlproofer --check-html --disable-external _site
+          command: bundle exec htmlproofer --check-html --disable-external _site
 
 
 workflows:
   version: 2
   build-and-test-gem:
     jobs:
-      - build
-      - build-gem
+      - dependencies
+      - build:
+          requires:
+            - dependencies
+      - build-gem:
+          requires:
+            - dependenceis
       - test-gem:
           requires:
             - build-gem
