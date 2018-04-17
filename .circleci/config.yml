@@ -41,7 +41,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - federalist-basic-report-theme-*.gem
+            - pkg/federalist-basic-report-theme-*.gem
 
   test-gem:
     docker:
@@ -57,7 +57,7 @@ jobs:
           command: jekyll new
       - run:
           name: Install the theme
-          command: gem install federalist-basic-report-theme-*.gem
+          command: gem install pkg/federalist-basic-report-theme-*.gem
       - run:
           name: Configure the theme
           command: "echo 'theme: federalist-basic-report-theme' >> _config.yml"
