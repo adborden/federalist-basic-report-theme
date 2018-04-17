@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://federalist.18f.gov/"
   spec.license       = "CC0-1.0"
 
-  spec.files         = [ `files -print0`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README)!i) }
+  spec.files         = `files -print0`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README)!i) }
 
   spec.add_runtime_dependency "jekyll", "~> 3.7"
 
