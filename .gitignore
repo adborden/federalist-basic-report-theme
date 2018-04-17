@@ -6,3 +6,4 @@ _site/
 /_sass/uswds/
 node_modules
 pkg/
+npm-debug.log
