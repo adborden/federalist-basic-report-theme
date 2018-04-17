@@ -108,3 +108,4 @@ exclude:
   - LICENSE.md
   - Rakefile
   - README.md
+  - vendor
