@@ -44,6 +44,9 @@ jobs:
       - attach_workspace:
          at: .
       - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
+      - run:
           name: Copy USWDS files and assets
           command: npm run update-uswds
       - run:
@@ -60,6 +63,9 @@ jobs:
       - checkout
       - attach_workspace:
          at: .
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
       - run:
           name: Copy USWDS files and assets
           command: npm run update-uswds
