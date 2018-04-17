@@ -93,3 +93,18 @@ contact:
 # Include your own css overrides by adding files in /assets/css/site.css
 #styles:
 #  - /assets/css/site.css
+
+# Jekyll settings
+permalink: pretty
+exclude:
+  - CONTRIBUTING.md
+  - federalist-basic-report-theme.gemspec
+  - federalist-basic-report-theme-*.gem
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+  - LICENSE.md
+  - Rakefile
+  - README.md
