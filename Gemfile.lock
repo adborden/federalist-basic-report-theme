@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    federalist-basic-report-theme (0.1.0)
+    federalist-basic-report-theme (0.1.1)
       jekyll (~> 3.7)
 
 GEM
