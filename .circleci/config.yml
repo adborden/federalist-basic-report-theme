@@ -86,10 +86,9 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-
       - run:
           name: Install the dependencies
-          command: gem install jekyll htmlproofer
+          command: gem install jekyll html-proofer
       - run:
           name: Install the theme
           command: gem install pkg/federalist-basic-report-theme-*.gem
