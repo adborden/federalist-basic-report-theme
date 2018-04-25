@@ -158,7 +158,7 @@ To create a new release, simply bump the version in
     $ export version=v0.1.0
     $ git checkout master
     $ git tag $version
-    $ git push
+    $ git push origin $version
 
 
 ## Contributing

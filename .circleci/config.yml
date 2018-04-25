@@ -84,7 +84,10 @@ workflows:
   version: 2
   commit:
     jobs:
-      - test
+      - test:
+          filters:
+            tags:
+              only: /^v.*/
       - release-gem:
           requires:
             - test
