@@ -148,6 +148,19 @@ When your theme is released, only the files in `_layouts`, `_includes`, `_sass` 
 To add a custom directory to your theme-gem, please edit the regexp in `federalist-basic-report-theme.gemspec` accordingly.
 
 
+## Release
+
+Publishing to rubygems is handled by CI.
+
+To create a new release, simply bump the version in
+`federalist-basic-report-theme.gemspec`, commit, and tag the release. e.g.
+
+    $ export version=v0.1.0
+    $ git checkout master
+    $ git tag $version
+    $ git push
+
+
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for additional information.

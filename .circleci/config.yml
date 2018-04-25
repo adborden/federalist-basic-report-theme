@@ -7,7 +7,7 @@ references:
 
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/ruby:2.3-node
     steps:
@@ -43,7 +43,7 @@ jobs:
           name: Test
           command: htmlproofer --check-favicon --check-html --disable-external _site
 
-  build-gem:
+  release-gem:
     docker:
       - image: circleci/ruby:2.3-node
     steps:
@@ -67,54 +67,29 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: Install Ruby dependencies
-          command: bundle install --path vendor/bundle
+          name: Setup rubygems
+          command: .circleci/setup-rubygems.sh
       - run:
           name: Copy USWDS files and assets
           command: npm run update-uswds
       - run:
           name: Build gem
           command: npm run gem:build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - pkg/federalist-basic-report-theme-*.gem
-
-  test-gem:
-    docker:
-      - image: circleci/ruby:2.3
-    steps:
-      - attach_workspace:
-          at: .
       - run:
-          name: Install the dependencies
-          command: gem install jekyll html-proofer
-      - run:
-          name: Install the theme
-          command: gem install pkg/federalist-basic-report-theme-*.gem
-      # Avoid using bundler here
-      - run:
-          name: Create new Jekyll site
-          command: jekyll new jekyll-new-site
-      - run:
-          name: Configure the theme
-          command: "echo 'theme: federalist-basic-report-theme' >> _config.yml"
-          working_dir: jekyll-new-site
-      - run:
-          name: Jekyll build
-          command: jekyll build
-          working_dir: jekyll-new-site
-      - run:
-          name: Test the site
-          command: htmlproofer --check-html --disable-external jekyll-new-site/_site
+          name: Release gem
+          command: npm run gem:release
 
 
 workflows:
   version: 2
-  build-and-test-gem:
+  commit:
     jobs:
-      - build
-      - build-gem
-      - test-gem:
+      - test
+      - release-gem:
           requires:
-            - build-gem
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
