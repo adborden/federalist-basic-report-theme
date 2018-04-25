@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "federalist-basic-report-theme"
-  spec.version       = "0.1.2"
+  spec.version       = "0.1.3"
   spec.authors       = ["Aaron D Borden"]
   spec.email         = ["adborden@a14n.net"]
 
