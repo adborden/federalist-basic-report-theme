@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    federalist-basic-report-theme (0.1.1)
+    federalist-basic-report-theme (0.1.4)
       jekyll (~> 3.7)
 
 GEM
@@ -37,7 +37,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    jekyll (3.7.3)
+    jekyll (3.8.0)
       addressable (~> 2.4)
       colorator (~> 1.0)
       em-websocket (~> 0.5)
