@@ -162,6 +162,7 @@ dependencies.
 
 Commit the changes and create a new PR. Once merged, create a new git tag.
 
+    $ git checkout master && git pull
     $ git tag $version
     $ git push origin $version
 
