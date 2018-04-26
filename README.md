@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/adborden/federalist-basic-report-theme.svg?style=svg)](https://circleci.com/gh/adborden/federalist-basic-report-theme)
+
 # Federalist Basic Report Theme
 
 This repo contains the Jekyll theme for the Basic Report [Federalist] template.
@@ -144,6 +146,25 @@ Your theme is setup just like a normal Jekyll site! To test your theme, run `bun
 
 When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
 To add a custom directory to your theme-gem, please edit the regexp in `federalist-basic-report-theme.gemspec` accordingly.
+
+
+## Release
+
+Publishing to rubygems is handled by CI. To trigger the release, you need to
+bump the version as per [semver](https://semver.org/) and push a new git tag.
+
+Determine the new version e.g. `v0.1.0`.
+
+Bump the version in `federalist-basic-report-theme.gemspec`. Then update the
+dependencies.
+
+    $ bundle install
+
+Commit the changes and create a new PR. Once merged, create a new git tag.
+
+    $ git checkout master && git pull
+    $ git tag $version
+    $ git push origin $version
 
 
 ## Contributing

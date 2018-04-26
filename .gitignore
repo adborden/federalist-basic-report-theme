@@ -5,3 +5,6 @@ _site/
 /assets/uswds/
 /_sass/uswds/
 node_modules
+pkg/
+npm-debug.log
+vendor/

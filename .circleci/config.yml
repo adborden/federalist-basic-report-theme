@@ -1,0 +1,98 @@
+references:
+  bundle-cache-key: &bundle-cache-key
+    v1-bundle-{{ checksum "Gemfile.lock" }}
+  npm-cache-key: &npm-cache-key
+    v1-npm-{{ checksum "package-lock.json" }}
+
+
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby:2.3-node
+    steps:
+      - checkout
+      - restore_cache:
+          key: *bundle-cache-key
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle-cache-key
+          paths:
+            - vendor/bundle
+      - restore_cache:
+          key: *npm-cache-key
+      - run:
+          name: Install Node.js dependencies
+          command: npm install
+      - save_cache:
+          key: *npm-cache-key
+          paths:
+            - node_modules
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
+      - run:
+          name: Copy USWDS files and assets
+          command: npm run update-uswds
+      - run:
+          name: Build
+          command: JEKYLL_ENV=production bundle exec jekyll build
+      - run:
+          name: Test
+          command: htmlproofer --check-favicon --check-html --disable-external _site
+
+  release-gem:
+    docker:
+      - image: circleci/ruby:2.3-node
+    steps:
+      - checkout
+      - restore_cache:
+          key: *bundle-cache-key
+      - run:
+          name: Install Ruby dependencies
+          command: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle-cache-key
+          paths:
+            - vendor/bundle
+      - restore_cache:
+          key: *npm-cache-key
+      - run:
+          name: Install Node.js dependencies
+          command: npm install
+      - save_cache:
+          key: *npm-cache-key
+          paths:
+            - node_modules
+      - run:
+          name: Setup rubygems
+          command: .circleci/setup-rubygems.sh
+      - run:
+          name: Copy USWDS files and assets
+          command: npm run update-uswds
+      - run:
+          name: Build gem
+          command: npm run gem:build
+      - run:
+          name: Release gem
+          command: npm run gem:release
+
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /^v.*/
+      - release-gem:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
