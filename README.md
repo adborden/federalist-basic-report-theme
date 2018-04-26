@@ -150,13 +150,18 @@ To add a custom directory to your theme-gem, please edit the regexp in `federali
 
 ## Release
 
-Publishing to rubygems is handled by CI.
+Publishing to rubygems is handled by CI. To trigger the release, you need to
+bump the version as per [semver](https://semver.org/) and push a new git tag.
 
-To create a new release, simply bump the version in
-`federalist-basic-report-theme.gemspec`, commit, and tag the release. e.g.
+Determine the new version e.g. `v0.1.0`.
 
-    $ export version=v0.1.0
-    $ git checkout master
+Bump the version in `federalist-basic-report-theme.gemspec`. Then update the
+dependencies.
+
+    $ bundle install
+
+Commit the changes and create a new PR. Once merged, create a new git tag.
+
     $ git tag $version
     $ git push origin $version
 
