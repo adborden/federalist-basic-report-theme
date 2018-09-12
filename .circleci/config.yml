@@ -41,7 +41,7 @@ jobs:
           command: JEKYLL_ENV=production bundle exec jekyll build
       - run:
           name: Test
-          command: bundle exec htmlproofer --check-favicon --check-html --disable-external _site
+          command: npm test
 
   release-gem:
     docker:
