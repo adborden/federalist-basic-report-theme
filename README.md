@@ -109,7 +109,6 @@ this one.
 
 #### `header.html`
 
-#### `
 
 ### Stylesheets
 
