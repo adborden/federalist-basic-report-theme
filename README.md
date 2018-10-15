@@ -9,6 +9,15 @@ multiple pages about a recent report or order. This setup provides a clean space
 for complex details or instructions. Navigation can be customized to host many
 pages while maintaining a clear hierarchy.
 
+## Features
+
+This theme provides:
+
+- Single call-to-action to download the report
+- Simple customization of the header/footer for agency information
+- Site analytics through [Digital Analytics Program](https://digital.gov/dap/)
+  or [Google Analytics](https://marketingplatform.google.com/about/analytics/)
+
 
 ## Installation
 
@@ -37,9 +46,9 @@ Or install it yourself as:
 
     $ gem install federalist-basic-report-theme
 
+
 ## Usage
 
-TODO: Write usage instructions here. Describe your available layouts, includes, sass and/or assets.
 
 ### Site-wide Configuration
 
@@ -135,6 +144,22 @@ download_report_button:
   text: Download as PDF
   href: /assets/docs/sample-document.pdf
 ```
+
+
+## Principles
+
+In April 2018, we took a closer look into how we were providing Federalist site
+templates (starter sites) and wrote up some
+[recommendations](https://docs.google.com/document/d/1WSwpiw44DAfHOSh3uyQlY8VybaN4shUYYAW6NLpLnl4/edit)
+that frame the direction we'd like to take with the starter sites.
+
+- Enable the user to focus on content.
+- Any overrides provided should be fully supported.
+- Users can upgrade themes to get new features or bugfixes.
+- Themes should be semantically versioned with predictable backwards
+  compatibility.
+- Themes should use and encourage web development best practices.
+- Provide an "eject" path for  advanced users.
 
 
 ## Development
