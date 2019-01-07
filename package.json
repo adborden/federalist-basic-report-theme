@@ -16,6 +16,6 @@
     "update-sass": "mkdir -p _sass/uswds && cp -r node_modules/uswds/src/stylesheets/* _sass/uswds/"
   },
   "dependencies": {
-    "uswds": "^1.6.8"
+    "uswds": "^1.6.9"
   }
 }
