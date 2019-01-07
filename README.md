@@ -69,6 +69,20 @@ download_report_button:
   href: /assets/docs/sample-document.pdf
 ```
 
+#### `contact` (object)
+
+Configure information about your agency. Upload your agency's logo to the
+`assets/` directory.
+
+```
+# _config.yml
+
+contact:
+  agency_name: General Services Administration
+  agency_logo: /assets/img/agency-logo.png
+```
+
+
 ### Page configuration
 
 These settings can be added to the front-matter of your content pages.
